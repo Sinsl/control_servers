@@ -21,6 +21,9 @@ concurrency:
 jobs:
   eslint:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
 
     steps:
       - uses: actions/checkout@v4
@@ -28,12 +31,14 @@ jobs:
         with:
           node-version: 22.14.0
           cache: 'yarn'
-      - run: cd frontend
       - run: yarn
       - run: yarn lint
 
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
 
     steps:
       - uses: actions/checkout@v4
@@ -41,7 +46,6 @@ jobs:
         with:
           node-version: 22.14.0
           cache: 'yarn'
-      - run: cd frontend
       - run: yarn
       - run: yarn test
 
@@ -53,6 +57,9 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
 
     steps:
       - uses: actions/checkout@v4
@@ -60,7 +67,6 @@ jobs:
         with:
           node-version: 22.14.0
           cache: 'yarn'
-      - run: cd frontend
       - run: yarn
       - run: yarn build
       - name: Setup Pages
