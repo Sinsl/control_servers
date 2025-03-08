@@ -29,8 +29,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22.14.0
-          cache: "yarn"
-
+        #   cache: "yarn"
       - run: yarn
       - run: yarn lint
 
@@ -44,7 +43,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22.14.0
-          cache: "yarn"
+        #   cache: "yarn"
       - run: yarn
       - run: yarn test
 
@@ -64,7 +63,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22.14.0
-          cache: "yarn"
+        #   cache: "yarn"
       - run: yarn
       - run: yarn build
       - name: Setup Pages
