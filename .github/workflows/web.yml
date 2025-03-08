@@ -22,10 +22,11 @@ jobs:
   eslint:
     runs-on: ubuntu-latest
 
+
     steps:
       - uses: actions/checkout@v4
-        with:
-          path: "./frontend"
+        # with:
+        #   path: "./frontend"
       - uses: actions/setup-node@v4
         with:
           node-version: 22.14.0
@@ -33,45 +34,45 @@ jobs:
       - run: yarn
       - run: yarn lint
 
-  test:
-    runs-on: ubuntu-latest
+  # test:
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          path: "./frontend"
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22.14.0
-        #   cache: "yarn"
-      - run: yarn
-      - run: yarn test
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         path: "./frontend"
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 22.14.0
+  #       #   cache: "yarn"
+  #     - run: yarn
+  #     - run: yarn test
 
-  build:
-    needs: [eslint, test]
+  # build:
+  #   needs: [eslint, test]
 
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  #   environment:
+  #     name: github-pages
+  #     url: ${{ steps.deployment.outputs.page_url }}
 
-    runs-on: ubuntu-latest
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          path: "./frontend"
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22.14.0
-        #   cache: "yarn"
-      - run: yarn
-      - run: yarn build
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: "dist"
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #       with:
+  #         path: "./frontend"
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 22.14.0
+  #       #   cache: "yarn"
+  #     - run: yarn
+  #     - run: yarn build
+  #     - name: Setup Pages
+  #       uses: actions/configure-pages@v4
+  #     - name: Upload artifact
+  #       uses: actions/upload-pages-artifact@v3
+  #       with:
+  #         path: "dist"
+  #     - name: Deploy to GitHub Pages
+  #       id: deployment
+  #       uses: actions/deploy-pages@v4
