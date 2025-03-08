@@ -10,6 +10,12 @@ body {
     width: 100%;
     padding: 20px;
 }
+.msg-start {
+  width: 100%;
+  text-align: center;
+  font-size: 40px;
+  color: green;
+}
 .container {
     width: 100%;
     padding: 20px 0;
