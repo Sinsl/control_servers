@@ -54,20 +54,18 @@ jobs:
   build:
     needs: [eslint, test]
 
-    defaults:
-      run:
-        working-directory: frontend
-
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: frontend
     
     steps:
       - uses: actions/checkout@v4
-        with:
-          path: "./frontend"
       - uses: actions/setup-node@v4
         with:
           node-version: 22.14.0
