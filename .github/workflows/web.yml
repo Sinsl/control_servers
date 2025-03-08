@@ -28,29 +28,28 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        # with:
-        #   path: "./frontend"
       - uses: actions/setup-node@v4
         with:
           node-version: 22.14.0
-          # path: "./frontend"
         #   cache: "yarn"
       - run: yarn
       - run: yarn lint
 
-  # test:
-  #   runs-on: ubuntu-latest
+  test:
+    runs-on: ubuntu-latest
 
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #       with:
-  #         path: "./frontend"
-  #     - uses: actions/setup-node@v4
-  #       with:
-  #         node-version: 22.14.0
-  #       #   cache: "yarn"
-  #     - run: yarn
-  #     - run: yarn test
+    defaults:
+      run:
+        working-directory: frontend
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.14.0
+        #   cache: "yarn"
+      - run: yarn
+      - run: yarn test
 
   # build:
   #   needs: [eslint, test]
