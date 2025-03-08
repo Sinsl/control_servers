@@ -19,34 +19,34 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-
   eslint:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          path: "./frontend"
       - uses: actions/setup-node@v4
         with:
           node-version: 22.14.0
           cache: "yarn"
+
       - run: yarn
-        working-directory: ./frontend
       - run: yarn lint
-        working-directory: ./frontend
 
   test:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          path: "./frontend"
       - uses: actions/setup-node@v4
         with:
           node-version: 22.14.0
           cache: "yarn"
       - run: yarn
-        working-directory: ./frontend
       - run: yarn test
-        working-directory: ./frontend
 
   build:
     needs: [eslint, test]
@@ -59,14 +59,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          path: "./frontend"
       - uses: actions/setup-node@v4
         with:
           node-version: 22.14.0
           cache: "yarn"
       - run: yarn
-        working-directory: ./frontend
       - run: yarn build
-        working-directory: ./frontend
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
