@@ -28,6 +28,7 @@ jobs:
         with:
           node-version: 22.14.0
           cache: 'yarn'
+      - run: cd frontend
       - run: yarn
       - run: yarn lint
 
@@ -40,6 +41,7 @@ jobs:
         with:
           node-version: 22.14.0
           cache: 'yarn'
+      - run: cd frontend
       - run: yarn
       - run: yarn test
 
@@ -58,6 +60,7 @@ jobs:
         with:
           node-version: 22.14.0
           cache: 'yarn'
+      - run: cd frontend
       - run: yarn
       - run: yarn build
       - name: Setup Pages
